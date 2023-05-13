@@ -19,24 +19,8 @@
 
   <div class="container">
     <div class="left-side">
-      <form class="search">
-        <input type="radio" name="search-button" id="search-show-button" class="search-show-button">
-        <input type="radio" name="search-button" id="search-hide-button" class="search-hide-button">
-        <label for="search-show-button" class="search-show-label">
-          <svg class="search-svg" width="28px" height="28px" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.00024000000000000003">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M9.5 17c1.71 0 3.287-.573 4.55-1.537l4.743 4.744a1 1 0 0 0 1.414-1.414l-4.744-4.744A7.5 7.5 0 1 0 9.5 17zM15 9.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                fill="#ffffff"></path>
-            </g>
-          </svg>
-        </label>
-        <label for="search-hide-button" class="search-hide-label">Cкрыть</label>
-        <span class="search-hint">Вы можете найти любой город мира!</span>
-        <input type="search" maxlength="40" id="search-field" class="search-field" placeholder="Искать город" value=""
+      <div class="search">
+        <input type="text" maxlength="40" id="search-field" class="search-field" placeholder="Искать город" value=""
           autocomplete="off">
         <button id="search-button" class="form-button" type="button">
           <svg class="search-svg" width="28px" height="28px" viewBox="0 0 24 24" fill="none"
@@ -62,13 +46,13 @@
             </g>
           </svg>
         </button>
-      </form>
+      </div>
       <article class="location">
         <span class="city">Красноярск,</span>
         <span class="country">Россия</span>
       </article>
       <article class="weather-current">
-        <svg width="150" height="150" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <!--<svg width="150" height="150" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
           class="weather-current-svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
             d="M27.0693 12.1726C27.6561 11.3304 28.0002 10.3064 28.0002 9.2021C28.0002 6.32906 25.6711 4 22.7981 4C21.4845 4 20.2846 4.4869 19.369 5.29007C18.8431 4.85511 18.2719 4.47294 17.6636 4.15166C18.9701 2.82355 20.7879 2 22.7981 2C26.7757 2 30.0002 5.22449 30.0002 9.2021C30.0002 10.9899 29.3488 12.6255 28.2704 13.8846C27.9565 13.254 27.5502 12.6774 27.0693 12.1726Z"
@@ -88,7 +72,8 @@
               <stop offset="1" stop-color="#5193DE" />
             </linearGradient>
           </defs>
-        </svg>
+        </svg>-->
+        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Дождь" width="150" height="150">
         <div class="weather-current-description">
           <span class="current-temperature">19&deg</span>
           <span class="current-condition">Дождь</span>
@@ -108,7 +93,7 @@
               fill="white" />
           </svg>
           <span class="wind-mark">Ветер</span>
-          <span class="wind-speed">3м/с</span>
+          <span class="wind-speed">3 м/с</span>
         </article>
         <article class="humidity-indicator">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +103,7 @@
               fill="white" />
           </svg>
           <span class="humidity-mark">Влажность</span>
-          <span class="humidity-percent">62%</span>
+          <span class="humidity-percent">62 %</span>
         </article>
         <article class="rainfall-indicator">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +113,7 @@
               fill="white" />
           </svg>
           <span class="rainfall-mark">Осадки</span>
-          <span class="rainfall-level">2мм</span>
+          <span class="rainfall-level">2 мм</span>
         </article>
       </section>
       <section class="weather-forecast">
@@ -1596,7 +1581,7 @@
             охлаждению поверхности нашей планеты.</span>
           <span class="cloudiness-title">Облачность</span>
           <span class="cloudiness-percent">91%</span>
-          <span class="cloudiness-description">Облачность повышена из-за дождя</span>
+          <!--<span class="cloudiness-description">Облачность повышена из-за дождя</span>-->
           <svg class="clousiness-svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1691,8 +1676,8 @@
             расстоянии от себя Вы можете отчетливо видеть различные объекты, например, здания и возвышенности.</span>
           <span class="visibility-title">Видимость</span>
           <span class="visibility-value">5</span>
-          <span class="visibility-metering">км</span>
-          <span class="visibility-description">Видимость снижена из-за дождя</span>
+          <span class="visibility-metering"> км</span>
+          <!--<span class="visibility-description">Видимость снижена из-за дождя</span>-->
           <svg class="visibility-svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1734,8 +1719,8 @@
           <span class="parameter-tooltip">Порыв ветра — это резкое увеличение скорости ветра, обычно длится менее 20
             секунд.</span>
           <span class="wind-direction-title">Направление ветра</span>
-          <span class="wind-direction-value">Юв</span>
-          <span class="wind-direction-description">Порывы ветра до 13м/с</span>
+          <span class="wind-direction-value">ЮВ</span>
+          <span class="wind-direction-description">Порывы ветра до 13 м/с</span>
           <svg class="wind-direction-svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="1.2">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

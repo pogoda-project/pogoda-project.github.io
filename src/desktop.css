@@ -10,7 +10,7 @@ body {
   padding-bottom: 3%;
   display: flex;
   flex-direction: column;
-  background: -webkit-linear-gradient(90deg, #70d2ff,#33beff,#33beff)
+  background: -webkit-linear-gradient(90deg, #70d2ff, #33beff, #33beff);
 }
 
 .container {
@@ -76,12 +76,6 @@ body {
   opacity: 0;
 }
 
-.search-show-button,
-.search-hide-button {
-  display: none;
-}
-
-.search-show-label,
 .form-button {
   position: absolute;
   width: 2.5rem;
@@ -101,18 +95,6 @@ body {
   background: none;
 }
 
-.search-hide-label {
-  position: absolute;
-  bottom: -1.25rem;
-  right: 1rem;
-  font-size: 0.875rem;
-  color: white;
-  opacity: 0;
-  -moz-transition: all 0.4s linear;
-  -webkit-transition: all 0.4s linear;
-  transition: all 0.4s linear;
-}
-
 .reset-button {
   position: absolute;
   background: none;
@@ -125,41 +107,20 @@ body {
   opacity: 0;
 }
 
-.search-show-button:checked ~ .search-hint {
+.search-hint {
   opacity: 0;
   -moz-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
 
-.search-show-button:checked ~ .search-field {
+.search-field {
   width: 100%;
   opacity: 1;
   z-index: 1;
 }
 
-.search-hide-button:checked ~ .search-field {
-  width: 1%;
-  opacity: 0;
-}
-
-.search-show-button:checked ~ .search-show-label {
-  display: none;
-}
-
-.search-hide-button:checked ~ .search-show-label {
-  display: flex;
-}
-
-.search-show-button:checked ~ .search-hide-label {
-  opacity: 1;
-}
-
-.search-hide-button:checked ~ .search-hide-label {
-  opacity: 0;
-}
-
-.search-show-button:checked ~ .reset-button {
+.reset-button {
   opacity: 1;
   transition: all 0.4s linear;
   z-index: 1;
@@ -167,14 +128,6 @@ body {
 
 .search-field:focus {
   background: rgba(255, 255, 255, 0.3);
-}
-
-.search-show-label:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.search-hide-label:hover {
-  color: gray;
 }
 
 .form-button:hover .search-svg {
@@ -510,7 +463,7 @@ body {
 }
 
 .right-side::after {
-  content: "";
+  content: '';
   background-color: #dcdcdc;
 
   position: absolute;
@@ -584,7 +537,18 @@ body {
   font-size: 1rem;
 }
 
-.suntime, .pressure, .wind-direction {
+.cloudiness,
+.visibility {
+  height: min-content;
+}
+
+.visibility {
+  row-gap: 10px;
+}
+
+.suntime,
+.pressure,
+.wind-direction {
   margin-right: 0;
 }
 
@@ -640,7 +604,7 @@ body {
 .sunset-title,
 .cloudiness-title,
 .pressure-title,
-.visibility-title, 
+.visibility-title,
 .wind-direction-title {
   text-transform: uppercase;
   flex-basis: 70%;
@@ -661,10 +625,10 @@ body {
 }
 
 .cloudiness-percent {
-  margin-top: 0.625rem
+  margin-top: 0.625rem;
 }
 
-.cloudiness-description  {
+.cloudiness-description {
   margin-top: 1.25rem;
 }
 
