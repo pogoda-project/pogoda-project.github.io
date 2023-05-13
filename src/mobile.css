@@ -1,0 +1,631 @@
+html {
+    font-size: 100%;
+  }
+  
+  body {
+    font-family: Inter, sans-serif;
+    color: #ffffff;
+    font-weight: 200;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    background: -webkit-linear-gradient(90deg, #70d2ff,#33beff,#33beff);
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .left-side {
+    padding: 1rem 1rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search {
+    position: relative;
+    height: 2.5rem;
+    display: flex;
+    z-index: 1;
+  }
+  
+  .search-hint {
+    position: absolute;
+    left: 3.125rem;
+    top: 0.625rem;
+    font-size: 0.875rem;
+    -moz-transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    z-index: 1;
+  }
+  
+  .search-field::-webkit-search-decoration,
+  .search-field::-webkit-search-cancel-button,
+  .search-field::-webkit-search-results-button,
+  .search-field::-webkit-search-results-decoration {
+    display: none;
+  }
+  
+  .search-field::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .search-field {
+    width: 1%;
+    height: 100%;
+    padding-left: 2.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: inherit;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    border-radius: 0.625rem;
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    opacity: 0;
+    caret-color: white;
+  }
+  
+  .search-show-button,
+  .search-hide-button {
+    display: none;
+  }
+  
+  .search-show-label,
+  .form-button {
+    position: absolute;
+    width: 2.5rem;
+    height: 100%;
+    padding: 0;
+    border-radius: 0.625rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .form-button {
+    z-index: 0;
+    background: none;
+  }
+  
+  .search-hide-label {
+    position: absolute;
+    bottom: -1.25rem;
+    right: 1rem;
+    font-size: 0.875rem;
+    color: white;
+    opacity: 0;
+    -moz-transition: all 0.4s linear;
+    -webkit-transition: all 0.4s linear;
+    transition: all 0.4s linear;
+  }
+  
+  .reset-button {
+    position: absolute;
+    background: none;
+    border: none;
+    bottom: 0.5rem;
+    right: 0.75rem;
+    opacity: 0;
+    color: grey;
+    opacity: 0;
+  }
+  
+  .search-show-button:checked ~ .search-hint {
+    opacity: 0;
+    -moz-transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+  }
+  
+  .search-show-button:checked ~ .search-field {
+    width: 100%;
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .search-hide-button:checked ~ .search-field {
+    width: 1%;
+    opacity: 0;
+  }
+  
+  .search-show-button:checked ~ .search-show-label {
+    display: none;
+  }
+  
+  .search-hide-button:checked ~ .search-show-label {
+    display: flex;
+  }
+  
+  .search-show-button:checked ~ .search-hide-label {
+    opacity: 1;
+  }
+  
+  .search-hide-button:checked ~ .search-hide-label {
+    opacity: 0;
+  }
+  
+  .search-show-button:checked ~ .form-button {
+    z-index: 1;
+  }
+  
+  .search-show-button:checked ~ .reset-button {
+    opacity: 1;
+    transition: all 0.4s linear;
+    z-index: 1;
+  }
+  
+  .search-field:focus {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .search-show-label:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .search-hide-label:hover {
+    color: gray;
+  }
+  
+  .form-button:hover .search-svg {
+    fill: gray;
+  }
+  
+  .reset-button:hover .reset-svg {
+    fill: gray;
+  }
+  
+  .location {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  
+  .weather-current {
+    display: flex;
+    margin-top: 0.625rem;
+  }
+  
+  .weather-current-description {
+    display: flex;
+    margin-left: 1rem;
+    flex-direction: column;
+  }
+  
+  .current-temperature {
+    font-size: 4rem;
+  }
+  
+  .current-condition {
+    font-size: 1.5rem;
+    margin-left: 0.625rem;
+    margin-top: -0.625rem;
+  }
+  
+  .date-time {
+    display: flex;
+    margin-top: 1.19rem;
+    flex-wrap: wrap;
+  }
+  
+  .current-date {
+    flex-basis: 100%;
+    font-size: 1.5rem;
+  }
+  
+  .current-week-day {
+    font-size: 1.25rem;
+    margin-top: 0.625rem;
+  }
+  
+  .current-time {
+    display: none;
+  }
+  
+  .weather-indicators {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    width: 85%;
+  }
+  
+  .wind-indicator,
+  .humidity-indicator,
+  .rainfall-indicator {
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 1.5rem;
+  }
+  
+  .rainfall-indicator {
+    margin-bottom: 0;
+  }
+  
+  .wind-mark,
+  .wind-speed,
+  .humidity-mark,
+  .humidity-percent,
+  .rainfall-mark,
+  .rainfall-level {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .wind-mark,
+  .humidity-mark {
+    margin-left: 0.32rem;
+  }
+  
+  .rainfall-mark {
+    margin-left: 0.625rem;
+  }
+  
+  .wind-speed,
+  .humidity-percent,
+  .rainfall-level {
+    margin-left: auto;
+  }
+  
+  .weather-forecast {
+    margin-left: 5%;
+  }
+  
+  .weather-forecast-button {
+    display: none;
+  }
+  
+  .weather-forecast-label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 1rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
+    margin-right: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.56rem;
+    background: rgba(255, 255, 255, 0);
+    color: #708090;
+  }
+  
+  .weather-forecast-label:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .hourly-weather-label,
+  .tommorow-weather-label {
+    border-right: 1px solid white;
+    padding-right: 1rem;
+  }
+  
+  .weather-forecast-button:checked + .weather-forecast-label {
+    background: rgba(255, 255, 255, 0);
+    color: white;
+  }
+  
+  .hourly-weather-forecast,
+  .tommorow-weather-forecast,
+  .weekly-weather-forecast {
+    display: none;
+    padding: 0.625rem 0.94rem;
+    border-radius: 0.25rem;
+  }
+  
+  .hourly-weather-button:checked ~ .hourly-weather-forecast,
+  .tommorow-weather-button:checked ~ .tommorow-weather-forecast,
+  .weekly-weather-button:checked ~ .weekly-weather-forecast {
+    display: block;
+    cursor: pointer;
+  }
+  
+  #hourly-weather-wrapper,
+  #tommorow-weather-wrapper,
+  #weekly-weather-wrapper {
+    width: 100%;
+    position: relative;
+    margin-left: -1rem;
+    margin-right: auto;
+  }
+  
+  #hourly-weather-carousel,
+  #tommorow-weather-carousel,
+  #weekly-weather-carousel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  
+  #hourly-weather-carousel::-webkit-scrollbar,
+  #tommorow-weather-carousel::-webkit-scrollbar,
+  #weekly-weather-carousel::-webkit-scrollbar {
+    display: none;;
+  }
+  
+  #hourly-weather-content,
+  #tommorow-weather-content,
+  #weekly-weather-content {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+  }
+  
+  #hourly-weather-item,
+  #tommorow-weather-item,
+  #weekly-weather-item {
+    position: relative;
+    width: 5rem;
+    height: 8.75rem;
+    margin: -0.25rem;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  
+  .forecast-tooltip {
+    display: none;
+  }
+  
+  .last-tooltip {
+    display: none;
+  }
+  
+  #hourly-weather-previous,
+  #tommorow-weather-previous,
+  #weekly-weather-previous,
+  #hourly-weather-next,
+  #tommorow-weather-next,
+  #weekly-weather-next {
+    display: none;
+  }
+  
+  .hourly-weather-svg,
+  .tommorow-weather-svg,
+  .weekly-weather-svg {
+    order: 1;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+  
+  .hourly-weather-temperature,
+  .tommorow-weather-temperature,
+  .weekly-weather-svg {
+    order: 2;
+  }
+  
+  .weekly-weather-svg {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .week-day-date,
+  .week-day-min-temperature {
+    font-size: 0.875rem;
+    color: #708090;
+  }
+  
+  .week-day-max-temperature,
+  .week-day-min-temperature {
+    order: 3;
+  }
+  
+  .right-side {
+    position: relative;
+    max-width: 100%;
+    min-height: 100%;
+    padding: 1rem 1rem 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .right-side::after {
+    content: "";
+    background-color: #dcdcdc;
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.25;
+  }
+  
+  .weather-parameters {
+    margin-top: 1rem;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .parameter-tooltip {
+    display: flex;
+    background-color: rgba(27, 27, 27, 0.95);
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    text-align: left;
+    border-radius: 3.125rem;
+    display: none;
+  }
+  
+  .tooltip-info-button {
+    display: flex;
+    position: absolute;
+    padding: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    bottom: 0;
+    right: 1.5rem;
+    background: none;
+    border: none;
+  }
+  
+  .tooltip-info-button:focus + .parameter-tooltip {
+    display: block;
+  }
+  
+  .suntime,
+  .feels-like,
+  .cloudiness,
+  .pressure,
+  .visibility,
+  .wind-direction {
+    margin-top: 2rem;
+    position: relative;
+    width: 90%;
+    height: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3.125rem;
+    padding: 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .suntime:hover,
+  .feels-like:hover,
+  .cloudiness:hover,
+  .pressure:hover,
+  .visibility:hover
+  .wind-direction:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .feels-like-title {
+    text-transform: uppercase;
+  }
+  
+  .feels-like-temperature,
+  .visibility-value {
+    margin-top: -0.625rem;
+  }
+  
+  .sunrise,
+  .sunset {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .sunset {
+    margin-top: 0.625rem;
+  }
+  
+  .feels-like-title,
+  .feels-like-temperature,
+  .sunrise-title,
+  .sunset-title,
+  .sunrise-time,
+  .sunset-time,
+  .cloudiness-title,
+  .cloudiness-percent,
+  .pressure-title,
+  .pressure-value,
+  .pressure-metering,
+  .visibility-title,
+  .visibility-value,
+  .visibility-metering,
+  .wind-direction-title,
+  .wind-direction-value {
+    order: 1;
+  }
+  
+  .sunrise-title,
+  .sunset-title,
+  .cloudiness-title,
+  .pressure-title,
+  .visibility-title,
+  .wind-direction-title {
+    text-transform: uppercase;
+    flex-basis: 80%;
+    margin-left: 0.5rem;
+    margin-top: 0.125rem;
+  }
+  
+  .sunrise-time,
+  .sunset-time,
+  .feels-like-temperature,
+  .cloudiness-percent,
+  .pressure-value,
+  .visibility-value,
+  .wind-direction-value {
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    flex-basis: 100%;
+  }
+  
+  .uv-index-level {
+    margin-top: 0.625rem;
+  }
+  
+  .feels-like-decsription,
+  .cloudiness-description,
+  .pressure-description,
+  .visibility-description,
+  .wind-direction-description {
+    order: 2;
+    flex-basis: 85%;
+  }
+  
+  .pressure-svg {
+    margin-top: -0.25rem;
+  }
+  
+  .pressure-value {
+    margin-top: -0.25rem;
+  }
+  
+  .pressure-metering {
+    margin-top: -1.75rem;
+    flex-basis: 100%;
+  }
+  
+  .visibility-title {
+    flex-basis: 85%;
+  }
+  
+  .visibility-value {
+    flex-basis: 8%
+  }
+  
+  .visibility-metering {
+    font-size: 1.5rem;
+    flex-basis: 50%;
+  }
+  
+  .wind-direction-value {
+    margin-top: -0.625rem;
+  }
+  
+  .wind-direction-description {
+    margin-bottom: -0.625rem;
+  }
