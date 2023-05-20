@@ -124,38 +124,24 @@ function updateWeatherIndicators(currentWeatherData) {
 }
 
 function updateWeatherForecast(weekWeatherData) {
-  const hourlyWeatherList = document.querySelectorAll('.hourly-weather-item');
-  hourlyWeatherList.forEach((item, index) => {
-    const temperature = item.querySelector('.hourly-weather-temperature');
-    const tooltip = item.querySelector('.forecast-tooltip');
-    const icon = item.querySelector('.svg-box');
-
-    temperature.innerHTML =
-      Math.round(weekWeatherData[0].temperature_2m[index]) + ' &deg';
-    tooltip.innerHTML = openmeteo[weekWeatherData[0].weathercode[index]][0];
-    icon.innerHTML =
-      openmeteo[weekWeatherData[0].weathercode[index]][
-        2 - weekWeatherData[0].is_day[index]
-      ];
-  });
-
-  const tommorowWeatherList = document.querySelectorAll(
-    '.tommorow-weather-item'
+  const weatherList = document.querySelectorAll(
+    '.hourly-weather-item, .tommorow-weather-item'
   );
-  tommorowWeatherList.forEach((item, index) => {
-    const temperature = item.querySelector('.tommorow-weather-temperature');
+  weatherList.forEach((item, index) => {
+    const temperature = item.querySelector(
+      '.hourly-weather-temperature, .tommorow-weather-temperature'
+    );
     const tooltip = item.querySelector('.forecast-tooltip');
     const icon = item.querySelector('.svg-box');
-    index += 24;
 
     temperature.innerHTML =
       Math.round(weekWeatherData[0].temperature_2m[index]) + ' &deg';
     tooltip.innerHTML = openmeteo[weekWeatherData[0].weathercode[index]][0];
-    console.log(tooltip.innerHTML);
     icon.innerHTML =
       openmeteo[weekWeatherData[0].weathercode[index]][
         2 - weekWeatherData[0].is_day[index]
       ];
+    icon.children[0].classList.add('hourly-weather-svg');
   });
 
   const weeklyWeatherList = document.querySelectorAll('.weekly-weather-item');
@@ -180,6 +166,7 @@ function updateWeatherForecast(weekWeatherData) {
       Math.round(weekWeatherData[1].temperature_2m_min[index]) + ' &deg';
     tooltip.innerHTML = openmeteo[weekWeatherData[1].weathercode[index]][0];
     icon.innerHTML = openmeteo[weekWeatherData[1].weathercode[index]][1];
+    icon.children[0].classList.add('weekly-weather-svg');
   });
 }
 
@@ -288,5 +275,7 @@ function displayResults(weather) {
 }
 
 void (async function () {
+  document.body.style.display = 'none';
   await updateWeatherData('Красноярск');
+  document.body.style.display = 'block';
 })();

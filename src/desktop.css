@@ -277,16 +277,49 @@ body {
 .hourly-weather-forecast,
 .tommorow-weather-forecast,
 .weekly-weather-forecast {
-  display: none;
-  padding: 0.625rem 0.94rem;
+  padding: 0;
   border-radius: 0.25rem;
 }
 
 .hourly-weather-button:checked ~ .hourly-weather-forecast,
 .tommorow-weather-button:checked ~ .tommorow-weather-forecast,
 .weekly-weather-button:checked ~ .weekly-weather-forecast {
-  display: block;
   cursor: pointer;
+}
+
+.hourly-weather-forecast,
+.hourly-weather-item,
+.tommorow-weather-forecast,
+.tommorow-weather-item,
+.weekly-weather-forecast,
+.weekly-weather-item {
+  height: 0px !important;
+}
+
+.hourly-weather-forecast button,
+.tommorow-weather-forecast button,
+.weekly-weather-forecast button {
+  display: none !important;
+}
+
+.hourly-weather-button:checked ~ .hourly-weather-forecast,
+.tommorow-weather-button:checked ~ .tommorow-weather-forecast,
+.weekly-weather-button:checked ~ .weekly-weather-forecast {
+  height: auto !important;
+}
+
+.hourly-weather-button:checked ~ .hourly-weather-forecast .hourly-weather-item,
+.tommorow-weather-button:checked
+  ~ .tommorow-weather-forecast
+  .tommorow-weather-item,
+.weekly-weather-button:checked ~ .weekly-weather-forecast .weekly-weather-item {
+  height: 11.25rem !important;
+}
+
+.hourly-weather-button:checked ~ .hourly-weather-forecast button,
+.tommorow-weather-button:checked ~ .tommorow-weather-forecast button,
+.weekly-weather-button:checked ~ .weekly-weather-forecast button {
+  display: block !important;
 }
 
 #hourly-weather-wrapper,
