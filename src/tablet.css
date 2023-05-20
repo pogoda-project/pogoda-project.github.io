@@ -289,12 +289,6 @@ body {
   height: 0px !important;
 }
 
-.hourly-weather-forecast button,
-.tommorow-weather-forecast button,
-.weekly-weather-forecast button {
-  display: none !important;
-}
-
 .hourly-weather-button:checked ~ .hourly-weather-forecast,
 .tommorow-weather-button:checked ~ .tommorow-weather-forecast,
 .weekly-weather-button:checked ~ .weekly-weather-forecast {
@@ -307,12 +301,6 @@ body {
   .tommorow-weather-item,
 .weekly-weather-button:checked ~ .weekly-weather-forecast .weekly-weather-item {
   height: 11.25rem !important;
-}
-
-.hourly-weather-button:checked ~ .hourly-weather-forecast button,
-.tommorow-weather-button:checked ~ .tommorow-weather-forecast button,
-.weekly-weather-button:checked ~ .weekly-weather-forecast button {
-  display: block !important;
 }
 
 #hourly-weather-wrapper,
