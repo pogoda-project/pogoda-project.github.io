@@ -30,7 +30,7 @@ async function updateWeatherData(value) {
   updateCurrentWeather(currentWeatherData);
   updateDateTime(geoData.timezone);
   updateWeatherIndicators(currentWeatherData);
-  updateWeatherForecast();
+  updateWeatherForecast(weekWeatherData);
   updateWeatherParameters(currentWeatherData, geoData.timezone);
 }
 
@@ -47,7 +47,7 @@ function updateLocation(geoData) {
 }
 
 function updateCurrentWeather(currentWeatherData) {
-  const image = document.querySelector('.weather-current > img');
+  const icon = document.querySelector('.weather-current-svg-box');
   const temperature = document.querySelector('.current-temperature');
   const condition = document.querySelector('.current-condition');
   const conditions = {
@@ -68,9 +68,7 @@ function updateCurrentWeather(currentWeatherData) {
     Clouds: 'Облачно',
   };
 
-  image.src = `https://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}@2x.png`;
-  image.alt = conditions[currentWeatherData.weather[0].main];
-  image.style.opacity = '.8';
+  icon.innerHTML = openweather[currentWeatherData.weather[0].icon];
   temperature.innerHTML = Math.round(currentWeatherData.main.temp) + '&deg';
   condition.innerHTML = conditions[currentWeatherData.weather[0].main];
 }
@@ -125,7 +123,65 @@ function updateWeatherIndicators(currentWeatherData) {
     : 'нет';
 }
 
-function updateWeatherForecast() {}
+function updateWeatherForecast(weekWeatherData) {
+  const hourlyWeatherList = document.querySelectorAll('.hourly-weather-item');
+  hourlyWeatherList.forEach((item, index) => {
+    const temperature = item.querySelector('.hourly-weather-temperature');
+    const tooltip = item.querySelector('.forecast-tooltip');
+    const icon = item.querySelector('.svg-box');
+
+    temperature.innerHTML =
+      Math.round(weekWeatherData[0].temperature_2m[index]) + ' &deg';
+    tooltip.innerHTML = openmeteo[weekWeatherData[0].weathercode[index]][0];
+    icon.innerHTML =
+      openmeteo[weekWeatherData[0].weathercode[index]][
+        2 - weekWeatherData[0].is_day[index]
+      ];
+  });
+
+  const tommorowWeatherList = document.querySelectorAll(
+    '.tommorow-weather-item'
+  );
+  tommorowWeatherList.forEach((item, index) => {
+    const temperature = item.querySelector('.tommorow-weather-temperature');
+    const tooltip = item.querySelector('.forecast-tooltip');
+    const icon = item.querySelector('.svg-box');
+    index += 24;
+
+    temperature.innerHTML =
+      Math.round(weekWeatherData[0].temperature_2m[index]) + ' &deg';
+    tooltip.innerHTML = openmeteo[weekWeatherData[0].weathercode[index]][0];
+    console.log(tooltip.innerHTML);
+    icon.innerHTML =
+      openmeteo[weekWeatherData[0].weathercode[index]][
+        2 - weekWeatherData[0].is_day[index]
+      ];
+  });
+
+  const weeklyWeatherList = document.querySelectorAll('.weekly-weather-item');
+  weeklyWeatherList.forEach((item, index) => {
+    const weekDay = item.querySelector('.forecast-week-day');
+    const date = item.querySelector('.week-day-date');
+    const maxTemperature = item.querySelector('.week-day-max-temperature');
+    const minTemperature = item.querySelector('.week-day-min-temperature');
+    const tooltip = item.querySelector('.forecast-tooltip');
+    const icon = item.querySelector('.svg-box');
+    const weekDays = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+
+    weekDay.innerHTML =
+      weekDays[new Date(weekWeatherData[1].time[index]).getDay()];
+    date.innerHTML =
+      weekWeatherData[1].time[index].substring(8, 10) +
+      '/' +
+      weekWeatherData[1].time[index].substring(5, 7);
+    maxTemperature.innerHTML =
+      Math.round(weekWeatherData[1].temperature_2m_max[index]) + ' &deg';
+    minTemperature.innerHTML =
+      Math.round(weekWeatherData[1].temperature_2m_min[index]) + ' &deg';
+    tooltip.innerHTML = openmeteo[weekWeatherData[1].weathercode[index]][0];
+    icon.innerHTML = openmeteo[weekWeatherData[1].weathercode[index]][1];
+  });
+}
 
 function updateWeatherParameters(currentWeatherData, timezone) {
   const feelsLikeTemperature = document.querySelector(
@@ -217,22 +273,18 @@ async function getCurrentWeatherData(lat, lon) {
 }
 
 async function getWeekWeatherData(lat, long, time) {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=${time}&daily=weathercode,temperature_2m_max,temperature_2m_min`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=${time}&daily=weathercode,temperature_2m_max,temperature_2m_min&hourly=weathercode,temperature_2m,is_day`;
   let weekWeatherData;
   await fetch(url)
     .then((response) => response.json())
     .then((obj) => {
-      weekWeatherData = obj.daily;
+      weekWeatherData = [obj.hourly, obj.daily];
     });
   return weekWeatherData;
 }
 
 function displayResults(weather) {
   console.log(JSON.stringify(weather));
-}
-
-function clearResult() {
-  weatherCurrent.innerHTML = '';
 }
 
 void (async function () {

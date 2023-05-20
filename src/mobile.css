@@ -321,9 +321,9 @@ body {
   box-sizing: border-box;
 }
 
-#hourly-weather-item,
-#tommorow-weather-item,
-#weekly-weather-item {
+.hourly-weather-item,
+.tommorow-weather-item,
+.weekly-weather-item {
   position: relative;
   width: 5rem;
   height: 8.75rem;

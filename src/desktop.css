@@ -323,9 +323,9 @@ body {
   box-sizing: border-box;
 }
 
-#hourly-weather-item,
-#tommorow-weather-item,
-#weekly-weather-item {
+.hourly-weather-item,
+.tommorow-weather-item,
+.weekly-weather-item {
   position: relative;
   width: 7.5rem;
   height: 11.25rem;
@@ -340,9 +340,9 @@ body {
   color: #ffffff;
 }
 
-#hourly-weather-item:hover,
-#tommorow-weather-item:hover,
-#weekly-weather-item:hover {
+.hourly-weather-item:hover,
+.tommorow-weather-item:hover,
+.weekly-weather-item:hover {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 50px;
 }
@@ -368,15 +368,15 @@ body {
   left: 2.5rem;
 }
 
-#hourly-weather-item:hover .forecast-tooltip {
+.hourly-weather-item:hover .forecast-tooltip {
   display: block;
 }
 
-#tommorow-weather-item:hover .forecast-tooltip {
+.tommorow-weather-item:hover .forecast-tooltip {
   display: block;
 }
 
-#weekly-weather-item:hover .forecast-tooltip {
+.weekly-weather-item:hover .forecast-tooltip {
   display: block;
 }
 
