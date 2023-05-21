@@ -1,0 +1,51 @@
+.container,
+.container-clear {
+  --background-gradient-1: #5fb4db;
+  --background-gradient-2: #2a9cd1;
+  --background-gradient-3: #2a9cd1;
+}
+
+.container-cloudy {
+  --background-gradient-1: #6b9bb2;
+  --background-gradient-2: #67a1bf;
+  --background-gradient-3: #67a1bf;
+}
+
+.container-dull {
+  --background-gradient-1: #4d7a8f;
+  --background-gradient-2: #5991ac;
+  --background-gradient-3: #5991ac;
+}
+
+.container-night {
+  --background-gradient-1: #004869;
+  --background-gradient-2: #0a2b3a;
+  --background-gradient-3: #0a2b3a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .container,
+  .container-clear {
+    --background-gradient-1: #4fa4cb;
+    --background-gradient-2: #1a8cc1;
+    --background-gradient-3: #1a8cc1;
+  }
+
+  .container-cloudy {
+    --background-gradient-1: #4b7b92;
+    --background-gradient-2: #47819f;
+    --background-gradient-3: #47819f;
+  }
+
+  .container-dull {
+    --background-gradient-1: #2d5a6f;
+    --background-gradient-2: #39718c;
+    --background-gradient-3: #39718c;
+  }
+
+  .container-night {
+    --background-gradient-1: #004869;
+    --background-gradient-2: #0a2b3a;
+    --background-gradient-3: #0a2b3a;
+  }
+}

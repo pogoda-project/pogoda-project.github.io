@@ -12,7 +12,12 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  background: -webkit-linear-gradient(90deg, #70d2ff, #33beff, #33beff);
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--background-gradient-1),
+    var(--background-gradient-2),
+    var(--background-gradient-3)
+  );
   margin-left: auto;
   margin-right: auto;
   -webkit-tap-highlight-color: transparent;
@@ -255,7 +260,7 @@ body {
   cursor: pointer;
   margin-bottom: 1.56rem;
   background: rgba(255, 255, 255, 0);
-  color: #708090;
+  color: #afd6fe;
 }
 
 .weather-forecast-label:hover {
@@ -399,7 +404,7 @@ body {
 .week-day-date,
 .week-day-min-temperature {
   font-size: 0.875rem;
-  color: #708090;
+  color: #afd6fe;
 }
 
 .week-day-max-temperature,
@@ -448,7 +453,7 @@ body {
   left: 0;
   z-index: 1;
   text-align: left;
-  border-radius: 3.125rem;
+  border-radius: 2.125rem;
   display: none;
 }
 
@@ -477,18 +482,22 @@ body {
   margin-top: 2rem;
   position: relative;
   width: 90%;
-  height: 10rem;
+  height: min-content;
   display: flex;
   flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 3.125rem;
+  border-radius: 2.125rem;
   padding: 1.25rem;
   font-size: 1rem;
+  row-gap: 1rem;
+}
+
+.pressure {
+  row-gap: 1.5rem;
 }
 
 .cloudiness,
 .visibility {
-  height: min-content;
   gap: 10px;
 }
 

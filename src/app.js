@@ -26,12 +26,29 @@ async function updateWeatherData(value) {
   displayResults(currentWeatherData);
   displayResults(weekWeatherData);
 
+  updateContainer(currentWeatherData);
   updateLocation(geoData);
   updateCurrentWeather(currentWeatherData);
   updateDateTime(geoData.timezone);
   updateWeatherIndicators(currentWeatherData);
   updateWeatherForecast(weekWeatherData);
   updateWeatherParameters(currentWeatherData, geoData.timezone);
+}
+
+function updateContainer(currentWeatherData) {
+  const container = document.querySelector('.container');
+  container.classList.remove(
+    'container-clear',
+    'container-cloudy',
+    'container-dull',
+    'container-night'
+  );
+  let modifier;
+  if (currentWeatherData.clouds.all < 30) modifier = 'clear';
+  else if (currentWeatherData.clouds.all < 60) modifier = 'cloudy';
+  else modifier = 'dull';
+  if (currentWeatherData.weather[0].icon.slice(-1) == 'n') modifier = 'night';
+  container.classList.add('container-' + modifier);
 }
 
 function updateLocation(geoData) {
@@ -178,7 +195,7 @@ function updateWeatherParameters(currentWeatherData, timezone) {
     '.feels-like-decsription'
   );
   feelsLikeTemperature.innerHTML =
-    Math.round(currentWeatherData.main.feels_like) + '&deg';
+    Math.round(currentWeatherData.main.feels_like) + ' &deg';
   feelsLikeDescription.innerHTML =
     currentWeatherData.main.feels_like > currentWeatherData.main.temp
       ? 'Из-за влажности кажется, что теплее'
@@ -232,9 +249,9 @@ function updateWeatherParameters(currentWeatherData, timezone) {
     return 'С';
   };
   windDirectionValue.innerHTML = getDirection(currentWeatherData.wind.deg);
-  windDirectionDescription.innerHTML = `Порывы ветра до ${Math.round(
-    currentWeatherData.wind.gust
-  )} м/с`;
+  windDirectionDescription.innerHTML = currentWeatherData.wind.gust
+    ? `Порывы ветра до<br>${Math.round(currentWeatherData.wind.gust)} м/с`
+    : null;
 }
 
 async function getGeoData(query) {
@@ -244,7 +261,8 @@ async function getGeoData(query) {
     .then((response) => response.json())
     .then((obj) => {
       geoData = obj.results[0];
-    });
+    })
+    .catch(() => alert('Такой город не найден!\nПопробуйте изменить запрос.'));
   return geoData;
 }
 

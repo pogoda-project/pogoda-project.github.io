@@ -10,14 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;800;900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="src/root.css">
   <link rel="stylesheet" href="src/desktop.css" media="(min-width: 1280px)">
   <link rel="stylesheet" href="src/tablet.css" media="(min-width: 768px) and (max-width: 1279px)">
   <link rel="stylesheet" href="src/mobile.css" media="(max-width: 767px)">
+
+  <script defer src="src/index.js"></script>
+  <script defer src="src/icons.js"></script>
+  <script defer src="src/app.js"></script>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="container container-clear">
     <div class="left-side">
       <div class="search">
         <input type="text" maxlength="40" id="search-field" class="search-field" placeholder="Искать город" value=""
@@ -1505,7 +1510,7 @@
                 </g>
               </svg></div>
           </button>
-          <span class="parameter-tooltip">Характерезует температуру, воспринимающуюся человеком, и которая может
+          <span class="parameter-tooltip">Характеризует температуру, воспринимающуюся человеком, и которая может
             отличаться от фактической температуры. На данный показатель влияют скорость ветра и относительная
             влажность.</span>
           <span class="feels-like-title">Ощущается как</span>
@@ -1739,10 +1744,6 @@
       </section>
     </div>
   </div>
-
-  <script src="src/index.js"></script>
-  <script src="src/icons.js"></script>
-  <script src="src/app.js"></script>
 
 </body>
 

@@ -13,7 +13,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: -webkit-linear-gradient(90deg, #70d2ff, #33beff, #33beff);
+  background: -webkit-linear-gradient(
+    90deg,
+    var(--background-gradient-1),
+    var(--background-gradient-2),
+    var(--background-gradient-3)
+  );
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -249,7 +254,7 @@ body {
   cursor: pointer;
   margin-bottom: 1.56rem;
   background: rgba(255, 255, 255, 0);
-  color: #708090;
+  color: #afd6fe;
 }
 
 .weather-forecast-label:hover {
@@ -344,7 +349,7 @@ body {
   height: 11.25rem;
   background: rgba(255, 255, 255, 0.2);
   margin-right: 3.125rem;
-  border-radius: 3.125rem;
+  border-radius: 2.125rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -357,7 +362,7 @@ body {
 .tommorow-weather-item:hover,
 .weekly-weather-item:hover {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 3.125rem;
+  border-radius: 2.125rem;
 }
 
 .forecast-tooltip {
@@ -423,7 +428,7 @@ body {
 .week-day-date,
 .week-day-min-temperature {
   font-size: 1rem;
-  color: #708090;
+  color: #afd6fe;
 }
 
 .week-day-max-temperature,
@@ -471,7 +476,7 @@ body {
   left: 0;
   z-index: 1;
   text-align: left;
-  border-radius: 3.125rem;
+  border-radius: 2.125rem;
   display: none;
 }
 
@@ -501,18 +506,14 @@ body {
   margin-top: 3.75rem;
   position: relative;
   width: 15rem;
-  height: 10.625rem;
+  height: min-content;
   display: flex;
   flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 3.125rem;
+  border-radius: 2.125rem;
   padding: 1.25rem;
   font-size: 1rem;
-}
-
-.cloudiness,
-.visibility {
-  height: min-content;
+  row-gap: 1rem;
 }
 
 .visibility {
