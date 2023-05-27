@@ -136,11 +136,11 @@ body {
 }
 
 .form-button:hover .search-svg {
-  fill: gray;
+  fill: #fff;
 }
 
 .reset-button:hover .reset-svg {
-  fill: gray;
+  fill: #fff;
 }
 
 .location {
@@ -404,7 +404,7 @@ body {
 #hourly-weather-next,
 #tommorow-weather-next,
 #weekly-weather-next {
-  display: none;
+  display: none !important;
 }
 
 .hourly-weather-svg,

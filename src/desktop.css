@@ -136,12 +136,12 @@ body {
 }
 
 .form-button:hover .search-svg {
-  fill: gray;
+  fill: #fff;
   cursor: pointer;
 }
 
 .reset-button:hover .reset-svg {
-  fill: gray;
+  fill: #fff;
   cursor: pointer;
 }
 

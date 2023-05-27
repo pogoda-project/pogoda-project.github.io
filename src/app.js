@@ -136,7 +136,7 @@ function updateWeatherIndicators(currentWeatherData) {
   humidityPercent.innerHTML =
     Math.round(currentWeatherData.main.humidity) + ' %';
   rainfallLevel.innerHTML = currentWeatherData.rain
-    ? Math.round(currentWeatherData.rain['1h']) + ' мм'
+    ? currentWeatherData.rain['1h'].toFixed(2) + ' мм'
     : 'нет';
 }
 
