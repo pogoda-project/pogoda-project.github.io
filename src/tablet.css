@@ -492,7 +492,7 @@ body {
   border: none;
 }
 
-.tooltip-info-button:focus + .parameter-tooltip {
+.tooltip-info-button:hover + .parameter-tooltip {
   display: block;
 }
 
