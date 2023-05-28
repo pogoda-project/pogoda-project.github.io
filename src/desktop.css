@@ -552,8 +552,8 @@ body {
   cursor: pointer;
 }
 
-.tooltip-info-button:hover + .parameter-tooltip,
-.parameter-tooltip:hover {
+.tooltip-info-button:focus + .parameter-tooltip,
+.parameter-tooltip:focus {
   display: block;
 }
 
