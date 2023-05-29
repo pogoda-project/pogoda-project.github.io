@@ -96,6 +96,10 @@ body {
   background: none;
 }
 
+.form-button > .svg-box {
+  transform: translateY(4px);
+}
+
 .reset-button {
   position: absolute;
   background: none;
